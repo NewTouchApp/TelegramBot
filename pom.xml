@@ -42,7 +42,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>target/classes/ApiApplication.class</mainClass>
+                            <mainClass>org.example.telegrambot.ApiApplication.class</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
