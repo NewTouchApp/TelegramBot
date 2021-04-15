@@ -11,12 +11,11 @@ public class Reminder {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column (name = "chat_id")
@@ -25,7 +24,7 @@ public class Reminder {
 
     @Column(name = "action_date")
     @NotNull
-    private LocalDateTime dateAction;
+    private LocalDateTime actionDate;
 
     @Column(name = "create_date")
     @NotNull
@@ -35,15 +34,20 @@ public class Reminder {
     @NotBlank
     private String message;
 
+    @Column(name = "actual")
+    @NotNull
+    private boolean actual;
+
     @Override
     public String toString() {
         return "Reminder{" +
                 "id=" + id +
                 ", user=" + user +
                 ", chatId='" + chatId + '\'' +
-                ", dateAction=" + dateAction +
+                ", dateAction=" + actionDate +
                 ", dateCreate=" + dateCreate +
                 ", message='" + message + '\'' +
+                ", actual='" + actual + '\'' +
                 '}';
     }
 
@@ -71,12 +75,12 @@ public class Reminder {
         this.chatId = chatId;
     }
 
-    public LocalDateTime getDateAction() {
-        return dateAction;
+    public LocalDateTime getActionDate() {
+        return actionDate;
     }
 
-    public void setDateAction(LocalDateTime dateAction) {
-        this.dateAction = dateAction;
+    public void setActionDate(LocalDateTime dateAction) {
+        this.actionDate = dateAction;
     }
 
     public LocalDateTime getDateCreate() {
@@ -93,5 +97,13 @@ public class Reminder {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public boolean isActual() {
+        return actual;
+    }
+
+    public void setActual(boolean actual) {
+        this.actual = actual;
     }
 }

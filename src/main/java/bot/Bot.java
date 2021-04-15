@@ -11,7 +11,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import service.MessageReceiver;
+import service.MessageHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +21,6 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 public class Bot extends TelegramLongPollingCommandBot {
     public static final Logger log = Logger.getLogger(Bot.class);
 
-    private ClassPathXmlApplicationContext springContext;
-    private MessageReceiver messageReceiver;
-
-    public final Queue<Object> sendQueue = new ConcurrentLinkedDeque<>();
     public final Queue<Object> receiveQueue = new ConcurrentLinkedDeque<>();
 
     private final String BOT_NAME;
@@ -34,22 +30,11 @@ public class Bot extends TelegramLongPollingCommandBot {
     public Bot(String BOT_NAME, String BOT_TOKEN) {
         this.BOT_NAME = BOT_NAME;
         this.BOT_TOKEN = BOT_TOKEN;
-        //springContext = new ClassPathXmlApplicationContext("spring/spring-app.xml","spring/spring-db.xml");
-        //springContext.refresh();
-        //messageReceiver = springContext.getBean(MessageReceiver.class);
-
     }
 
     @Override
     public void processNonCommandUpdate(Update update) {
         receiveQueue.add(update);
-    }
-
-    private String getUsername(Message msg) {
-        User user = msg.getFrom();
-        String userName = user.getUserName();
-        return (userName != null) ? userName : String.format("%s %s", user.toString(), user.getFirstName());
-        //return user.getUserName();
     }
 
     @Override
