@@ -42,7 +42,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.ApiApplication.class</mainClass>
+                            <mainClass>target/classes/ApiApplication.class</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
