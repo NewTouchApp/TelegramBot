@@ -1,10 +1,10 @@
-package service;
+package org.example.telegrambot.service;
 
-import bot.Bot;
-import entity.Reminder;
+import org.example.telegrambot.repositories.ReminderDAO;
+import org.example.telegrambot.repositories.UserDAO;
+import org.example.telegrambot.bot.Bot;
+import org.example.telegrambot.entity.Reminder;
 import org.apache.log4j.Logger;
-import repositories.ReminderDAO;
-import repositories.UserDAO;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

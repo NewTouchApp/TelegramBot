@@ -1,6 +1,6 @@
-package repositories;
+package org.example.telegrambot.repositories;
 
-import entity.Reminder;
+import org.example.telegrambot.entity.Reminder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,6 +1,6 @@
-package repositories;
+package org.example.telegrambot.repositories;
 
-import entity.User;
+import org.example.telegrambot.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;

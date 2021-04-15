@@ -1,4 +1,4 @@
-package entity;
+package org.example.telegrambot.entity;
 
 import javax.persistence.*;
 

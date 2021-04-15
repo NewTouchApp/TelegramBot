@@ -1,13 +1,15 @@
-import bot.Bot;
+package org.example.telegrambot;
+
+import org.example.telegrambot.bot.Bot;
 import org.apache.log4j.Logger;
+import org.example.telegrambot.repositories.ReminderDAO;
+import org.example.telegrambot.repositories.UserDAO;
+import org.example.telegrambot.service.ReminderHandler;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import repositories.ReminderDAO;
-import repositories.UserDAO;
-import service.MessageHandler;
-import service.ReminderHandler;
+import org.example.telegrambot.service.MessageHandler;
 //import org.telegram.telegrambots.ApiContextInitializer;
 
 //import java.util.logging.Logger;
@@ -19,6 +21,7 @@ public class ApiApplication {
     private static ClassPathXmlApplicationContext springContext;
 
     public static void main(String[] args) {
+        System.out.println(ApiApplication.class.getResource(""));
         springContext = new ClassPathXmlApplicationContext("spring/spring-app.xml","spring/spring-db.xml");
         springContext.refresh();
         UserDAO userDAO = springContext.getBean(UserDAO.class);

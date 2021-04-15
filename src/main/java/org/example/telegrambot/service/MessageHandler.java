@@ -1,18 +1,14 @@
-package service;
+package org.example.telegrambot.service;
 
-import entity.Reminder;
+import org.example.telegrambot.repositories.ReminderDAO;
+import org.example.telegrambot.repositories.UserDAO;
+import org.example.telegrambot.bot.Bot;
+import org.example.telegrambot.entity.Reminder;
 import org.apache.log4j.Logger;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.User;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import repositories.ReminderDAO;
-import repositories.UserDAO;
 import org.springframework.stereotype.Service;
-
-import bot.Bot;
 
 import java.util.Locale;
 import java.util.Optional;
@@ -103,7 +99,7 @@ public class MessageHandler implements Runnable {
     }
 
     private void sayHello(User userTelegram, String chatId) {
-        entity.User userDB = getCurrentOrCreateNewUser(userTelegram);
+        org.example.telegrambot.entity.User userDB = getCurrentOrCreateNewUser(userTelegram);
         bot.sendMessage(String.format("Hello %s",userDB.getUserName()) , chatId);
     }
 
@@ -112,14 +108,14 @@ public class MessageHandler implements Runnable {
         bot.sendMessageWithKeyBoard("I can accept only this list:", chatId);
     }
 
-    private entity.User getCurrentOrCreateNewUser(User userTelegram) {
+    private org.example.telegrambot.entity.User getCurrentOrCreateNewUser(User userTelegram) {
         long userTelegramId = userTelegram.getId();
-        Optional<entity.User> userDB = userDAO.findById(userTelegramId);
+        Optional<org.example.telegrambot.entity.User> userDB = userDAO.findById(userTelegramId);
         if (userDB.isPresent()) {
             return userDB.get();
         }
         else {
-            entity.User userNew = new entity.User();
+            org.example.telegrambot.entity.User userNew = new org.example.telegrambot.entity.User();
             userNew.setId(userTelegramId);
             String userTelegramName = userTelegram.getUserName() == null ? "Anonymous" : userTelegram.getUserName();
             userNew.setUserName(userTelegramName);
