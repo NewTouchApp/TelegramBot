@@ -33,6 +33,24 @@
         <telegram.version>5.0.1</telegram.version>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>ApiApplication.class</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
     <dependencies>
         <dependency>
             <groupId>org.telegram</groupId>
@@ -88,5 +106,7 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
     </dependencies>
+
+
 
 </project>
