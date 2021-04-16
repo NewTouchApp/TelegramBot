@@ -6,10 +6,12 @@
 
     <groupId>org.example</groupId>
     <artifactId>TelegramBot</artifactId>
+    <packaging>jar</packaging>
+
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -28,12 +30,13 @@
 
         <spring-data-jpa.version>2.4.5</spring-data-jpa.version>
         <spring.version>5.3.4</spring.version>
+        <spring-boot-maven>2.4.5</spring-boot-maven>
 
 
         <telegram.version>5.0.1</telegram.version>
     </properties>
 
-    <build>
+<!--    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -42,14 +45,34 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.telegrambot.ApiApplication.class</mainClass>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>org.example.test.ApiApplication.class</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven}</version>
+                <configuration>
+                    <mainClass>org.example.test.ApiApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>

@@ -1,15 +1,15 @@
-package org.example.telegrambot;
+package org.example;
 
-import org.example.telegrambot.bot.Bot;
+import org.example.bot.Bot;
+import org.example.repositories.ReminderDAO;
+import org.example.repositories.UserDAO;
+import org.example.service.ReminderHandler;
 import org.apache.log4j.Logger;
-import org.example.telegrambot.repositories.ReminderDAO;
-import org.example.telegrambot.repositories.UserDAO;
-import org.example.telegrambot.service.ReminderHandler;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import org.example.telegrambot.service.MessageHandler;
+import org.example.service.MessageHandler;
 //import org.telegram.telegrambots.ApiContextInitializer;
 
 //import java.util.logging.Logger;
